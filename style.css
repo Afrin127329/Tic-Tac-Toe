@@ -1,0 +1,153 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+:root {
+  --cell-width: 10vw;
+  --cell-height: 20vh;
+  --marker-width: calc((var(--cell-width)) * 0.9);
+  --marker-height: calc((var(--cell-height)) * 0.19);
+}
+
+body {
+  margin: 0;
+}
+
+h2 {
+  background-color: black;
+  color: white;
+  font-size: 5vh;
+  margin: 0;
+  padding: 1rem 0.5rem;
+}
+
+.board-container {
+  width: 100vw;
+  height: 90vh;
+  background-color: rgb(230, 252, 252);
+  display: flex;
+  flex-direction: column;
+  padding: 0.2rem;
+  align-items: center;
+}
+
+.description {
+  height: 10vh;
+  width: 50vw;
+  text-align: center;
+  margin-bottom: 2rem;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+}
+
+.msg {
+  font-size: 2rem;
+  font-weight: bold;
+  padding: 0rem 1rem;
+}
+
+#btn {
+  background-color: black;
+  color: white;
+  border-radius: 5px;
+  margin-top: 0.2rem;
+  padding: 0.1rem 0.3rem;
+  height: 2rem;
+}
+
+#btn:hover {
+  background-color: white;
+  color: black;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.game-container {
+  width: 30vw;
+  height: 60vh;
+  display: grid;
+  grid-template-columns: repeat(3, auto);
+  grid-template-rows: repeat(3, auto);
+}
+
+.cell {
+  width: var(--cell-width);
+  height: var(--cell-height);
+  border: 1px solid black;
+  position: relative;
+  display: flex;
+  align-content: center;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+}
+
+.cell.x,
+.cell.o {
+  cursor: not-allowed;
+}
+
+.cell.x::before {
+  content: "";
+  position: absolute;
+  width: var(--marker-width);
+  height: calc(var(--marker-height) * 0.9);
+  background-color: rgb(0, 0, 0);
+  transform: rotate(45deg);
+  border-radius: 50%;
+}
+
+.cell.x::after {
+  content: "";
+  position: absolute;
+  width: var(--marker-width);
+  height: calc(var(--marker-height) * 0.9);
+  background-color: rgb(0, 0, 0);
+  transform: rotate(-45deg);
+  border-radius: 50%;
+}
+
+.cell.o::before {
+  content: "";
+  position: absolute;
+  width: calc(var(--marker-width) * 0.7);
+  height: calc(var(--marker-height) * 3.6);
+  background-color: rgb(0, 0, 0);
+  border-radius: 50%;
+  border-radius: 50%;
+}
+
+.cell.o::after {
+  content: "";
+  position: absolute;
+  width: calc(var(--marker-width) * 0.5);
+  height: calc(var(--marker-height) * 2.6);
+  background-color: rgb(230, 252, 252);
+  border-radius: 50%;
+  border-radius: 50%;
+}
+
+.cell:first-child,
+.cell:nth-child(2),
+.cell:nth-child(3) {
+  border-top: none;
+}
+
+.cell:last-child,
+.cell:nth-child(7),
+.cell:nth-child(8) {
+  border-bottom: none;
+}
+
+.cell:nth-child(3n + 1) {
+  border-left: none;
+}
+
+.cell:nth-child(3n + 3) {
+  border-right: none;
+}
+
+/* Media Queries */
